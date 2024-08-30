@@ -1,0 +1,15 @@
+@page
+@model DeleteUserStoryModel
+@*@inject UserStoryService service*@
+@{
+    ViewData["Title"] = "DeleteUserStory";
+}
+<h1>Delete User Story</h1>
+
+<div class="alert alert-danger">
+    <h5>Are you sure you want to delete the UserStory - @Model.UserStory.Title</h5>
+    <form method="post">
+        <button typ="submit" class="btn btn-danger">Yes</button>
+        <a class="btn btn-primary" asp-page="/UserStory/UserStories">No</a>
+    </form>
+</div>

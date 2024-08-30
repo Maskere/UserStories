@@ -8,6 +8,10 @@ namespace UserStories{
         private string title;
         private string description;
         private static int nextId = 0;
+        private int businessValue;
+        private DateTime creationDate;
+        private int priority;
+        private string storyPoints;
 
         public UserStory() { }
 
@@ -15,6 +19,10 @@ namespace UserStories{
             id = nextId++;
             title = _title;
             description = _description;
+            businessValue = BusinessValue;
+            creationDate = CreationDate;
+            priority = Priority;
+            storyPoints = StoryPoints;
         }
         [BindProperty]
         public int Id{
@@ -28,6 +36,22 @@ namespace UserStories{
         public string Description{
             get{return description;}
             set{description=value;}
+        }
+        public int BusinessValue{
+            get{return businessValue;}
+            set{businessValue=value;}
+        }
+        public DateTime CreationDate{
+            get{return creationDate;}
+            set{creationDate=value;}
+        }
+        public int Priority{
+            get{return priority;}
+            set{priority=value;}
+        }
+        public string StoryPoints{
+            get{return storyPoints;}
+            set{storyPoints=value;}
         }
     }
 }

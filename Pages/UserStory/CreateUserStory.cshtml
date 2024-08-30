@@ -1,0 +1,62 @@
+@page
+@model CreateUserStoryModel
+@inject UserStoryService service
+@{
+    ViewData["Title"] = "CreateUserStory";
+}
+<h1>Create User Story</h1>
+
+<form method="post">
+    @if (Model.errorMessage.Length > 0)
+    {
+        <div>
+            <label class="text-danger">ID findes allerede</label>
+        </div>
+    }
+    <div>
+        <label asp-for="@Model.UserStory.Title" class="control-label">Title</label><p></p>
+        <input asp-for="@Model.UserStory.Title" class="form-control"/>
+        <span asp-validation-for="@Model.UserStory.Title" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <label asp-for="@Model.UserStory.Description" class="custom-control-label">Description</label>
+        <textarea asp-for="@Model.UserStory.Description" cols="120" class="form-control">
+        </textarea>
+        <span asp-validation-for="@Model.UserStory.Description" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div>
+        <label class="custom-control-label">Business Values</label><br/>
+        @foreach(var b in Model.BusinessValues){
+        <input name="IsChecked" type="checkbox" value="@b" /> @b<br/>
+        }
+        <span asp-validation-for="@Model.UserStory.BusinessValue" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div>
+        <label asp-for="@Model.UserStory.CreationDate" class="control-label">Creation time</label>
+        <input asp-for="@Model.UserStory.CreationDate" class="form-control" />
+        <span asp-validation-for="@Model.UserStory.CreationDate" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div>
+        <label asp-for="@Model.UserStory.Priority" class="control-label">Priority</label>
+        <input asp-for="@Model.UserStory.Priority" class="form-control" />
+        <span asp-validation-for="@Model.UserStory.Priority" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div>
+        <label asp-for="@Model.UserStory.StoryPoints" class="control-label">StoryPoints</label>
+        <input asp-for="@Model.UserStory.StoryPoints" class="form-control" />
+        <span asp-validation-for="@Model.UserStory.StoryPoints" class="text-danger"></span>
+    </div>
+    <p></p>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+        <input type="reset" value="Reset" class="btn brn-primary" />
+    </div>
+    <div>
+        <a asp-page="UserStories">Back to user stories</a>
+    </div>
+</form>
