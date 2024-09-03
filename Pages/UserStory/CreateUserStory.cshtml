@@ -29,7 +29,7 @@
     <div>
         <label class="custom-control-label">Business Values</label><br/>
         @foreach(var b in Model.BusinessValues){
-        <input name="IsChecked" type="checkbox" value="@b" /> @b<br/>
+        <input name="AreChecked" type="checkbox" value="@b" /> @b<br/>
         }
         <span asp-validation-for="@Model.UserStory.BusinessValue" class="text-danger"></span>
     </div>
@@ -41,15 +41,21 @@
     </div>
     <p></p>
     <div>
-        <label asp-for="@Model.UserStory.Priority" class="control-label">Priority</label>
-        <input asp-for="@Model.UserStory.Priority" class="form-control" />
+        <label class="custom-control-label">Priority</label><br>
+        @foreach(var p in Model.PriorityValues){
+            <input type="radio" asp-for="@Model.UserStory.Priority" value="@p" /> @p <br/>
+        }
         <span asp-validation-for="@Model.UserStory.Priority" class="text-danger"></span>
     </div>
     <p></p>
     <div>
-        <label asp-for="@Model.UserStory.StoryPoints" class="control-label">StoryPoints</label>
-        <input asp-for="@Model.UserStory.StoryPoints" class="form-control" />
-        <span asp-validation-for="@Model.UserStory.StoryPoints" class="text-danger"></span>
+        <label class="custom-control-label">Story Points</label><br/>
+        <select id="StoryPoint" name="StoryPoint" asp-for="StoryPoint" class="form-control">
+            @foreach(var sp in Model.StoryPoints){
+                <option value="@sp">@sp</option>
+            }
+        </select>
+        <span asp-validation-for="@Model.UserStory.StoryPoint" class="text-danger"></span>
     </div>
     <p></p>
     <div class="form-group">

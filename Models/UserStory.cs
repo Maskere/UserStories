@@ -7,11 +7,11 @@ namespace UserStories{
         private int id;
         private string title;
         private string description;
-        private static int nextId = 0;
+        private static int nextId = 1;
         private int businessValue;
         private DateTime creationDate;
         private int priority;
-        private string storyPoints;
+        private string storyPoint;
 
         public UserStory() { }
 
@@ -22,7 +22,7 @@ namespace UserStories{
             businessValue = BusinessValue;
             creationDate = CreationDate;
             priority = Priority;
-            storyPoints = StoryPoints;
+            storyPoint = StoryPoint;
         }
         [BindProperty]
         public int Id{
@@ -49,9 +49,15 @@ namespace UserStories{
             get{return priority;}
             set{priority=value;}
         }
-        public string StoryPoints{
-            get{return storyPoints;}
-            set{storyPoints=value;}
+        public string StoryPoint{
+            get{return storyPoint;}
+            set{storyPoint=value;}
+        }
+        public List<int> StoryPoints = new List<int>(){
+            1,2,3,5,8,13,21,34
+        };
+        public List<int> GetStoryPoints(){
+            return StoryPoints;
         }
     }
 }
